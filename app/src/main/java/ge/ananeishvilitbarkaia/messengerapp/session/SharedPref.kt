@@ -37,4 +37,25 @@ class SharedPref(context: Context) {
         editor!!.putString("PROFESSION", userId)
         editor!!.apply()
     }
+
+    fun getUserProfession(): String? {
+        return preference!!.getString("PROFESSION", "")
+    }
+
+    fun setImageUrl(str: String) {
+        editor!!.putString("P_I_URL", str)
+        editor!!.apply()
+    }
+
+    fun getImageUrl(): String? {
+        return preference!!.getString("P_I_URL", "")
+    }
+
+    fun getUserName(): String? {
+        return preference!!.getString("U_NAME", "")
+    }
+
+    fun getUserId(): String? {
+        return preference!!.getString("UID", "")
+    }
 }

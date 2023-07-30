@@ -9,4 +9,7 @@
     <string name="enter_your_nickname">Enter Your Nickname</string>
     <string name="logo">logo</string>
     <string name="please_wait">Please Wait …</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="update">Update</string>
+
 </resources>
