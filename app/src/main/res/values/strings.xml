@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Final Asignment</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="not_registered">not registered?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="what_i_do">What I Do</string>
+    <string name="enter_your_nickname">Enter Your Nickname</string>
+    <string name="logo">logo</string>
+    <string name="please_wait">Please Wait …</string>
 </resources>
