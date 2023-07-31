@@ -1,5 +1,6 @@
 package ge.ananeishvilitbarkaia.messengerapp.ui.userlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ge.ananeishvilitbarkaia.messengerapp.databinding.FragmentUserListBinding
 import ge.ananeishvilitbarkaia.messengerapp.model.MessageUsers
 import ge.ananeishvilitbarkaia.messengerapp.session.SharedPref
+import ge.ananeishvilitbarkaia.messengerapp.ui.chat.ChatActivity
 import ge.ananeishvilitbarkaia.messengerapp.ui.userlist.adapter.UsersAdapter
 import ge.ananeishvilitbarkaia.messengerapp.ui.userlist.interfaces.UserItemListener
 
@@ -67,7 +69,12 @@ class UserListFragment : Fragment(), UserItemListener {
         }
     }
 
-    override fun onCLickUserItem(user: MessageUsers) {
-        TODO("Not yet implemented")
+    override fun onClickUserItem(user: MessageUsers) {
+        val intent = Intent(requireActivity(), ChatActivity::class.java)
+        intent.putExtra("RCV_UID", user.receiverId)
+        intent.putExtra("U_NAME", user.name)
+        intent.putExtra("U_PRO", user.profession)
+        intent.putExtra("P_IMAGE", user.profileImage)
+        startActivity(intent)
     }
 }

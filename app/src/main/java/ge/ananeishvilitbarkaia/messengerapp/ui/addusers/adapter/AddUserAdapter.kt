@@ -1,4 +1,4 @@
-package ge.ananeishvilitbarkaia.messengerapp.ui.userlist.adapter
+package ge.ananeishvilitbarkaia.messengerapp.ui.addusers.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,38 +6,38 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import ge.ananeishvilitbarkaia.messengerapp.databinding.ItemUsersMessageBinding
-import ge.ananeishvilitbarkaia.messengerapp.model.MessageUsers
-import ge.ananeishvilitbarkaia.messengerapp.ui.userlist.interfaces.UserItemListener
-import ge.ananeishvilitbarkaia.messengerapp.utils.getTime
+import ge.ananeishvilitbarkaia.messengerapp.databinding.ItemUserBinding
+import ge.ananeishvilitbarkaia.messengerapp.model.User
+import ge.ananeishvilitbarkaia.messengerapp.ui.addusers.`interface`.UserMessageItemListener
 import ge.ananeishvilitbarkaia.messengerapp.utils.setImages
-import java.util.*
+import java.util.ArrayList
+import java.util.Locale
 
-class UsersAdapter(val context: Context, val users: ArrayList<MessageUsers>, val listener: UserItemListener): RecyclerView.Adapter<UsersAdapter.ViewHolder>(), Filterable  {
-    private var mListFiltered: List<MessageUsers> = users
+class AddUserAdapter(val context: Context, val users: ArrayList<User>, val listener: UserMessageItemListener): RecyclerView.Adapter<AddUserAdapter.ViewHolder>(),
+    Filterable {
+    private var mListFiltered: List<User> = users
 
-    class ViewHolder(view: ItemUsersMessageBinding): RecyclerView.ViewHolder(view.root) {
+    class ViewHolder(view: ItemUserBinding): RecyclerView.ViewHolder(view.root) {
         val binding = view
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemUsersMessageBinding.inflate(LayoutInflater.from(context), parent, false))
+        return ViewHolder(ItemUserBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvName.text = users[position].name
-        holder.binding.tvMessage.text = users[position].message
-        holder.binding.tvTime.text = getTime(users[position].time)
+        holder.binding.tvProfession.text = users[position].profession
         setImages(context, users[position].profileImage, holder.binding.ivProfile)
 
         holder.itemView.setOnClickListener {
-            listener.onClickUserItem(users[position])
+            listener.onCLickUserItem(users[position])
         }
 
     }
 
     override fun getItemCount(): Int {
-        return mListFiltered.size
+        return mListFiltered!!.size
     }
 
     override fun getFilter(): Filter {
@@ -47,7 +47,7 @@ class UsersAdapter(val context: Context, val users: ArrayList<MessageUsers>, val
                 if (charString.isEmpty()) {
                     mListFiltered = users
                 } else {
-                    val filteredList: MutableList<MessageUsers> = ArrayList<MessageUsers>()
+                    val filteredList: MutableList<User> = ArrayList<User>()
                     for (row in users) {
                         if (row.name.toLowerCase()
                                 .contains(charString.lowercase(Locale.getDefault())) || row.name
@@ -68,7 +68,7 @@ class UsersAdapter(val context: Context, val users: ArrayList<MessageUsers>, val
             }
 
             override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
-                mListFiltered = filterResults.values as ArrayList<MessageUsers>
+                mListFiltered = filterResults.values as ArrayList<User>
                 notifyDataSetChanged()
             }
         }
