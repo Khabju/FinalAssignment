@@ -47,7 +47,7 @@ fun getTime(date: String?): String? {
         if (seconds <= 0) {
             elapsed = "1s"
         }
-        elapsed = if (seconds > 0 && seconds < 60) {
+        elapsed = if (seconds in 1..59) {
             seconds.toString() + "s"
         } else if (seconds < 60 * 60) {
             val minutes = seconds / 60
