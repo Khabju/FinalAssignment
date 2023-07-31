@@ -1,5 +1,6 @@
 package ge.ananeishvilitbarkaia.messengerapp.ui.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import ge.ananeishvilitbarkaia.messengerapp.databinding.ActivityRegisterBinding
 import ge.ananeishvilitbarkaia.messengerapp.model.User
 import ge.ananeishvilitbarkaia.messengerapp.session.SharedPref
+import ge.ananeishvilitbarkaia.messengerapp.ui.dashboard.DashboardActivity
 import ge.ananeishvilitbarkaia.messengerapp.utils.isEmailValid
 import ge.ananeishvilitbarkaia.messengerapp.utils.isPasswordValid
 import com.google.firebase.auth.FirebaseUser
@@ -52,6 +54,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun goNext() {
         sharedPref.setSignIn(true)
+        startActivity(Intent(this, DashboardActivity::class.java))
         finish()
     }
 

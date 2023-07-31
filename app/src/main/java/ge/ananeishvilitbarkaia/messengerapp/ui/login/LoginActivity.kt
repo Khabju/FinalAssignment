@@ -10,6 +10,7 @@ import ge.ananeishvilitbarkaia.messengerapp.databinding.ActivityLoginBinding
 import ge.ananeishvilitbarkaia.messengerapp.model.User
 import ge.ananeishvilitbarkaia.messengerapp.session.SharedPref
 import ge.ananeishvilitbarkaia.messengerapp.ui.register.RegisterActivity
+import ge.ananeishvilitbarkaia.messengerapp.ui.dashboard.DashboardActivity
 import ge.ananeishvilitbarkaia.messengerapp.utils.isEmailValid
 import ge.ananeishvilitbarkaia.messengerapp.utils.isPasswordValid
 class LoginActivity : AppCompatActivity() {
@@ -59,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (sharedPref.getSignIn()){
+            startActivity(Intent(this, DashboardActivity::class.java))
             finish()
         }
     }
@@ -68,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
         sharedPref.setUserId(it.uid)
         sharedPref.setUserName(it.name)
         sharedPref.setUserProfession(it.profession)
+        startActivity(Intent(this, DashboardActivity::class.java))
         finish()
     }
 
